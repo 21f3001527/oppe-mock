@@ -1,0 +1,6 @@
+pandas
+scikit-learn
+pytest
+joblib
+dvc[gcs]
+cml

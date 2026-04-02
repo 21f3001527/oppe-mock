@@ -1,0 +1,36 @@
+name: CI Pipeline
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: actions/setup-python@v4
+      with:
+        python-version: 3.10
+
+    - run: pip install -r requirements.txt
+    - run: pip install dvc[gcs]
+
+    - run: dvc pull || echo "Skipping DVC pull"
+
+    - run: pytest
+
+    - name: Generate Report
+      run: |
+        echo "## Test Results" > report.md
+        pytest >> report.md
+
+    - uses: iterative/setup-cml@v2
+
+    - name: Comment PR
+      env:
+        REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        cml comment create report.md
