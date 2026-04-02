@@ -18,7 +18,9 @@ jobs:
     - run: pip install -r requirements.txt
     - run: pip install dvc[gcs]
 
-    - run: dvc pull || echo "Skipping DVC pull"
+    - name: DVC Pull (optional)
+      run: |
+        dvc pull || echo "Skipping DVC pull"
 
     - run: pytest
 
