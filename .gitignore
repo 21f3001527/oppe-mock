@@ -9,3 +9,5 @@ mlruns/
 mlflow.db
 *.db
 /tmp/
+processed_data/
+models/

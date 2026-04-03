@@ -1,6 +1,10 @@
 from feast import Entity, FeatureView, Field, FileSource
 from feast.types import Float64, Int64
 from datetime import timedelta
+import os
+
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+PARQUET_PATH = os.path.join(BASE_DIR, "processed_data", "stock_data.parquet")
 
 iris_entity = Entity(
     name="entity_id",
@@ -9,7 +13,7 @@ iris_entity = Entity(
 )
 
 iris_source = FileSource(
-    path="/home/jupyter/oppe-mock/processed_data/stock_data.parquet",
+    path=PARQUET_PATH,
     event_timestamp_column="event_timestamp"
 )
 

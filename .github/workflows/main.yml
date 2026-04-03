@@ -37,14 +37,14 @@ jobs:
         run: python scripts/process_data.py
 
       - name: Feast Apply
-        run: cd feature_repo && feast apply && cd ..
+        run: feast -c feature_repo apply
 
       - name: Feast Materialize
         run: python feature_repo/materialize.py
 
       - name: Train Model
         env:
-          MLFLOW_TRACKING_URI: ./mlruns
+          MLFLOW_TRACKING_URI: ${{ github.workspace }}/mlruns
         run: python scripts/train.py
 
       - name: DVC Push
