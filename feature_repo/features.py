@@ -9,7 +9,7 @@ iris_entity = Entity(
 )
 
 iris_source = FileSource(
-    path="processed_data/stock_data.parquet",
+    path="/home/jupyter/oppe-mock/processed_data/stock_data.parquet",
     event_timestamp_column="event_timestamp"
 )
 
