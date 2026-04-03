@@ -15,7 +15,7 @@ pkill -f "mlflow server" 2>/dev/null || true
 sleep 2
 mlflow server \
     --host 127.0.0.1 \
-    --port 5000 \
+    --port 5001 \
     --backend-store-uri sqlite:///mlflow.db \
     --default-artifact-root gs://feastt/mlflow &
 sleep 8

@@ -13,7 +13,7 @@ from datetime import datetime, timezone
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-MLFLOW_URI      = os.environ.get("MLFLOW_TRACKING_URI", "http://127.0.0.1:5000")
+MLFLOW_URI      = os.environ.get("MLFLOW_TRACKING_URI", "http://127.0.0.1:5001")
 EXPERIMENT_NAME = "iris_classification"
 
 def fetch_features():
